@@ -3,6 +3,11 @@ import console from 'node-color-log';
 import express from "express";
 import apiRouter from "./api/router";
 import appRouter from "./app/router";
+import fs from "fs";
+
+try{
+    fs.mkdirSync("./public/files")
+} catch {}
 
 //Set up server and default port
 const app = express();

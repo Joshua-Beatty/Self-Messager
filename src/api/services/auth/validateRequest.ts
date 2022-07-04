@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import db from "../dbSetup"
+import db from "../../dbSetup"
 const validator = function (req: Request, rsp: Response): string | void {
     const sessionId = req.cookies?.["__Secure-sessionId"]
     console.debug(req.headers)

@@ -1,6 +1,6 @@
 import { Handler, Request, Response } from "express";
 import { validate } from 'jsonschema';
-import db from '../dbSetup'
+import db from '../../dbSetup'
 import bcrypt from 'bcrypt'
 import sendNewSessionInfo from './sessionGenerator'
 const logInSchema = {

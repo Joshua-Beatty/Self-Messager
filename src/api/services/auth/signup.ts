@@ -2,7 +2,7 @@ import { Handler, Request, Response } from "express";
 import console from 'node-color-log'
 import { validate } from 'jsonschema';
 import bcrypt from 'bcrypt'
-import db from '../dbSetup'
+import db from '../../dbSetup'
 import sendNewSessionInfo from './sessionGenerator'
 const signUpSchema = {
     "type": "object",

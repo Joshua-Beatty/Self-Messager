@@ -1,16 +1,16 @@
-import { Router, json } from "express";
-import { logInHandler } from "./services/login";
+import { json, Router } from "express";
+import { logInHandler } from "./services/auth/login";
+import { signUpHandler } from "./services/auth/signup";
 import { newMessageHandler } from "./services/newMessage";
-import { signUpHandler } from "./services/signup";
-import cookieParser  from 'cookie-parser'
+import cookieParser from "cookie-parser";
+
+const apiRouter = Router();
 
 
-const apiRouter = Router()
-/* tsc-ignore following line */
-apiRouter.use(cookieParser())
-apiRouter.use(json())
-apiRouter.post("/auth/login", logInHandler)
-apiRouter.post("/auth/signup", signUpHandler)
-apiRouter.post("/newMessage", newMessageHandler)
+apiRouter.use(cookieParser());
+apiRouter.use(json());
+apiRouter.post("/auth/login", logInHandler);
+apiRouter.post("/auth/signup", signUpHandler);
+apiRouter.post("/newMessage", newMessageHandler);
 
-export {apiRouter as default}
+export { apiRouter as default };

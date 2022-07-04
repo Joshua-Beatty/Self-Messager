@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import db from "../dbSetup";
+import db from "../../dbSetup";
 import { v4 as uuid } from "uuid";
 import { sign } from "jsonwebtoken"
 function createAndSendNewSessionInfo( req: Request, rsp: Response, userId: string | Number, ) {
