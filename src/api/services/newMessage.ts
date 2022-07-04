@@ -15,6 +15,8 @@ type newMessageBody = {
 }
 const newMessage: Handler = async function (req: Request, rsp: Response) {
   const userId = getUserIdFromSession(req, rsp)
+  if (!userId) return;
+  
   const errors = validate(req?.body, newMessageSchema).errors.map((a)=>a.message);
   if(errors.length){
       rsp.status(422).send({errors})
@@ -23,7 +25,6 @@ const newMessage: Handler = async function (req: Request, rsp: Response) {
   const body: newMessageBody = req.body;
 
   
-  if (!userId) return;
 
     rsp.sendStatus(200)
 };
