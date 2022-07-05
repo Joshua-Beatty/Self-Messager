@@ -1,5 +1,6 @@
 import { Handler, Request, Response } from "express";
 import { validate } from "jsonschema";
+import db from "../dbSetup";
 import { getUserIdFromSession } from "./auth/validateRequest";
 
 const newMessageSchema = {
@@ -7,7 +8,7 @@ const newMessageSchema = {
   "properties": {
       "message": {"type": "string"}
   },
-  "required": ["message", "password"],
+  "required": ["message"],
   "additionalProperties": false
 }
 type newMessageBody = {
@@ -24,9 +25,10 @@ const newMessage: Handler = async function (req: Request, rsp: Response) {
   }
   const body: newMessageBody = req.body;
 
+  db.prepare('')
   
 
-    rsp.sendStatus(200)
+  rsp.sendStatus(200)
 };
 
 export { newMessage as newMessageHandler };

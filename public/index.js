@@ -18,8 +18,7 @@ function newMessage(){
     
     console.log("clicked new message")
     fetch("/api/newMessage", { method: "POST", body: JSON.stringify({
-        username: document.getElementById("username").value,
-        password: document.getElementById("password").value
+        message: document.getElementById("message").value
     }), headers: {"content-type": "application/json"}  }).then((value)=>value.json()).then((e)=>console.log(e))
 
 }

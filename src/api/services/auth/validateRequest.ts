@@ -10,10 +10,8 @@ const validator = function (req: Request, rsp: Response): string | void {
         return;
     }
 
-    const expiry = new Date()
-    expiry.setMinutes(expiry.getMinutes() + 30)
-
-    const session = db.prepare("UPDATE sessions SET expiry=? WHERE sessionId=? RETURNING userId").get(expiry.toISOString(), sessionId)
+    const create = new Date()
+    const session = db.prepare("UPDATE sessions SET lastUsed=? WHERE sessionId=? RETURNING userId").get(create.toISOString(), sessionId)
 
     if(!session){
         rsp.status(401).send({errors: ["Invalid Session ID"]})

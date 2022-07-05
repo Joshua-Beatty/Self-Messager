@@ -13,12 +13,12 @@ function createAndSendNewSessionInfo( req: Request, rsp: Response, userId: strin
       `__Secure-sessionId=${sessionId}; Secure; HttpOnly; SameSite=Strict; Path=/api`,
     ],
   );
-  const expiry = new Date()
-  expiry.setMinutes(expiry.getMinutes() + 30)
-  db.prepare("INSERT INTO sessions(userId,sessionId, userAgent, expiry) VALUES(?, ?, ?, ?);").run(userId, sessionId, userAgent, expiry.toISOString())
+  const create = new Date()
+
+  db.prepare("INSERT INTO sessions(userId, sessionId, userAgent, lastUsed) VALUES(?, ?, ?, ?);").run(userId, sessionId, userAgent, create.toISOString())
 
 
   rsp.sendStatus(200);
-}
+} 
 
 export { createAndSendNewSessionInfo as default };

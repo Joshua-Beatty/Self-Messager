@@ -15,7 +15,7 @@ const port = process.env.PORT || 8080;
 
 // import route handlers for the api and for the main app
 app.use( "/api/", apiRouter); 
-//app.use( "/", appRouter);
+//app.use( "/", appRouter); 
 
 app.use(express.static("public"))
 
