@@ -31,7 +31,8 @@
     "jsonwebtoken": "^8.5.1",
     "node-color-log": "^9.0.0",
     "rimraf": "^3.0.2",
-    "ua-parser-js": "^1.0.2"
+    "ua-parser-js": "^1.0.2",
+    "uuid": "^8.3.2"
   },
   "devDependencies": {
     "@types/bcrypt": "^5.0.0",
