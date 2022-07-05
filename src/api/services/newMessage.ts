@@ -2,6 +2,7 @@ import { Handler, Request, Response } from "express";
 import { validate } from "jsonschema";
 import db from "../dbSetup";
 import { getUserIdFromSession } from "./auth/validateRequest";
+import { newMessageHandler } from "./newMessageListner";
 
 const newMessageSchema = {
   "type": "object",
@@ -24,9 +25,8 @@ const newMessage: Handler = async function (req: Request, rsp: Response) {
       return;
   }
   const body: newMessageBody = req.body;
-
-  db.prepare('')
-  
+  db.prepare("INSERT INTO messages (userId, message , isFile) VALUES (?, ?, ?)").run(userId, body.message, "false")
+  newMessageHandler(userId, body.message, false)
 
   rsp.sendStatus(200)
 };

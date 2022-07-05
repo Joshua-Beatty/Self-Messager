@@ -4,6 +4,7 @@ import express from "express";
 import apiRouter from "./api/router";
 import appRouter from "./app/router";
 import fs from "fs";
+const https = require('node:https');
 
 try{
     fs.mkdirSync("./public/files")
@@ -20,7 +21,13 @@ app.use( "/api/", apiRouter);
 app.use(express.static("public"))
 
 // start the Server
-app.listen( port, () => {
+var privateKey = fs.readFileSync( 'example.com+5-key.pem' );
+var certificate = fs.readFileSync( 'example.com+5.pem' );
+
+https.createServer({
+    key: privateKey,
+    cert: certificate
+}, app).listen( port, () => {
     console.info( `server started at http://localhost:${ port }` );
     
 } );

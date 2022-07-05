@@ -2,9 +2,9 @@ import { Request, Response } from "express";
 import db from "../../dbSetup"
 const validator = function (req: Request, rsp: Response): string | void {
     const sessionId = req.cookies?.["__Secure-sessionId"]
-    console.debug(req.headers)
-    console.debug(req.cookies)
-    console.log(sessionId)
+    //console.debug(req.headers)
+    //console.debug(req.cookies)
+    //console.log(sessionId)
     if(!sessionId){
         rsp.status(401).send({errors: ["Session ID Not Found"]})
         return;
