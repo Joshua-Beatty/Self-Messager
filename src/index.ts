@@ -21,13 +21,7 @@ app.use( "/api/", apiRouter);
 app.use(express.static("public"))
 
 // start the Server
-var privateKey = fs.readFileSync( 'example.com+5-key.pem' );
-var certificate = fs.readFileSync( 'example.com+5.pem' );
-
-https.createServer({
-    key: privateKey,
-    cert: certificate
-}, app).listen( port, () => {
+app.listen( port, () => {
     console.info( `server started at http://localhost:${ port }` );
     
 } );
