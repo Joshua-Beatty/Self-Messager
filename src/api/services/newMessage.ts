@@ -25,7 +25,7 @@ const newMessage: Handler = async function (req: Request, rsp: Response) {
       return;
   }
   const body: newMessageBody = req.body;
-  db.prepare("INSERT INTO messages (userId, message , isFile) VALUES (?, ?, ?)").run(userId, body.message, "false")
+  db.prepare("INSERT INTO messages (userId, message , isFile, timeStamp) VALUES (?, ?, ?, ?)").run(userId, body.message, "false", (new Date()).toISOString())
   newMessageHandler(userId, body.message, false)
 
   rsp.sendStatus(200)

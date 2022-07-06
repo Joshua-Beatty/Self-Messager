@@ -28,6 +28,12 @@ function newMessage() {
     }).then((value) => value.text()).then((e) => console.log(e))
 
 }
+function getNewMessages() {
+
+    console.log("clicked new message")
+    fetch("/api/getMessages").then((value) => value.text()).then((e) => console.log(e))
+
+}
 window.onload = (event) => {
     console.log('page is fully loaded');
 };
